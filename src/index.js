@@ -1,17 +1,19 @@
-import React from 'react';
-import ReactDOM from 'react-dom';
+
+import React, { Component } from 'react';
+import { render } from 'react-dom';
 import './index.css';
-import App from './App';
-import * as serviceWorker from './serviceWorker';
+import Counter from './Counter';
+import { Provider } from 'react-redux';
+import store from './store';
 
-ReactDOM.render(
-  <React.StrictMode>
-    <App />
-  </React.StrictMode>,
-  document.getElementById('root')
-);
+class App extends Component {
+  render() {
+    return (
+      <div>
+        <Counter />
+      </div>
+    );
+  }
+}
 
-// If you want your app to work offline and load faster, you can change
-// unregister() to register() below. Note this comes with some pitfalls.
-// Learn more about service workers: https://bit.ly/CRA-PWA
-serviceWorker.unregister();
+render(<Provider store={store}><App /></Provider>, document.getElementById('root'));
